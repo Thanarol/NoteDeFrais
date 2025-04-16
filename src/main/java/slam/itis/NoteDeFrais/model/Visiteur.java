@@ -17,6 +17,19 @@ public class Visiteur {
     private Long id;
     private String login;
     private String mdp;
+    // private String region;
+
+    /*  bts blanc region
+    public String getRegion() {
+        return region;
+    }
+        
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+        */
+
     // rajouter un role
     // Relation avec FicheFrais
     @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL)

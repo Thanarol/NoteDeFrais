@@ -4,15 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import slam.itis.NoteDeFrais.model.FicheFrais;
 import slam.itis.NoteDeFrais.service.FicheFraisService;
@@ -45,18 +37,14 @@ public class FicheFraisController {
     // 🔹 Ajouter une nouvelle fiche de frais
     @PostMapping
     public ResponseEntity<FicheFrais> createFicheFrais(@RequestBody FicheFrais ficheFrais) {
-       // System.out.println("FicheFrais reçue : " + ficheFrais);
-        // Vérification et réinitialisation de l'ID pour éviter tout conflit
-        //ficheFrais.setId(null);
         FicheFrais newFicheFrais = service.createFicheFrais(ficheFrais);
         return ResponseEntity.status(HttpStatus.CREATED).body(newFicheFrais);
     }
-    
+
     // 🔹 Modifier une fiche de frais existante
     @PutMapping("/{id}")
     public ResponseEntity<?> updateFicheFrais(@PathVariable Long id, @RequestBody FicheFrais ficheFrais) {
         try {
-            ficheFrais.setId(id); // Assure que l'objet a bien le bon ID
             FicheFrais updatedFiche = service.updateFicheFrais(ficheFrais, id);
             return ResponseEntity.ok(updatedFiche);
         } catch (IllegalArgumentException e) {
