@@ -1,6 +1,5 @@
 package slam.itis.NoteDeFrais.controller;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,17 +58,4 @@ public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nom d'utilisateur ou mot de passe incorrect");
     }
 }
-/*  🔹 Compter les visiteurs par région
-@GetMapping("/nombre-par-region")
-public ResponseEntity<Map<String, Long>> countVisiteursParRegion() {
-    Map<String, Long> nombreParRegion = visiteurService.countVisiteursParRegion();
-    return ResponseEntity.ok(nombreParRegion);
-}
-
-@GetMapping("/frais-par-region")
-public ResponseEntity<Map<String, Double>> totalFraisParRegion() {
-    Map<String, Double> fraisParRegion = visiteurService.totalFraisParRegion();
-    return ResponseEntity.ok(fraisParRegion);
-}
-    */
 }

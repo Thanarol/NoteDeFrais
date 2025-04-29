@@ -1,14 +1,10 @@
 package slam.itis.NoteDeFrais.service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Service;
 
 import slam.itis.NoteDeFrais.Repository.VisiteurRepository;
-import slam.itis.NoteDeFrais.model.FicheFrais;
 import slam.itis.NoteDeFrais.model.Visiteur;
 
 @Service
@@ -44,23 +40,4 @@ public class VisiteurService {
     public Visiteur getVisiteurByMdp(String mdp) {
         return visiteurRepository.findByMdp(mdp);
     }
-
-    /* 
-    public Map<String, Long> countVisiteursParRegion() {
-        return visiteurRepository.findAll().stream()
-                .collect(Collectors.groupingBy(Visiteur::getRegion, Collectors.counting()));
-    }
-
-    public Map<String, Double> totalFraisParRegion() {
-        return visiteurRepository.findAll().stream()
-            .collect(Collectors.groupingBy(
-                Visiteur::getRegion, 
-                Collectors.summingDouble(visiteur -> 
-                    visiteur.getFichesFrais().stream()  // Utilisation de getFichesFrais au lieu de getFicheFrais
-                        .mapToDouble(ficheFrais -> ficheFrais.getMontantValide())  // Correctement mapper les montants
-                        .sum()  // Somme des montants des fiches de frais
-                )
-            ));
-    }
-    */
 }
